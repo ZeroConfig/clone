@@ -22,3 +22,17 @@ pipelines:
           - composer install --dev --prefer-dist --no-scripts --no-progress --optimize-autoloader --no-interaction -vvv
           - composer show
           - composer exec -v grumphp run
+
+    - step:
+        name: Push to GitHub
+        script:
+          - git remote add github $GITHUB_REMOTE
+          - git push github master --tags
+
+  tags:
+    '*':
+      - step:
+          name: Push tags to Github
+          script:
+            - git remote add github $GITHUB_REMOTE
+            - git push github --tags
