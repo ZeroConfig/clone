@@ -1,0 +1,55 @@
+{
+    "name": "zero-config/clone",
+    "description": "Perform deep clones of objects.",
+    "keywords": [
+        "clone",
+        "php",
+        "object"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan-Marten de Boer",
+            "email": "github@johmanx.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "mediact/testing-suite": "@stable"
+    },
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ],
+        "psr-4": {
+            "ZeroConfig\\Cloner\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ZeroConfig\\Cloner\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/mediact/testing-suite/config/default/grumphp.yml"
+        }
+    },
+    "archive": {
+        "exclude": [
+            "/.gitignore",
+            "/tests",
+            "/examples",
+            "/phpunit.xml",
+            "/phpmd.xml",
+            "/phpstan.neon",
+            "/phpcs.xml",
+            "/bitbucket-pipelines.yml"
+        ]
+    }
+}
