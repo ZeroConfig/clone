@@ -1,4 +1,4 @@
-image: zaherg/php-7.2-xdebug-alpine:latest
+image: cytopia/php-fpm-7.2:latest
 definitions:
   caches:
     vendor: vendor
@@ -22,7 +22,7 @@ pipelines:
           - composer install --dev --prefer-dist --no-scripts --no-progress --optimize-autoloader --no-interaction -vvv
           - composer show
           - composer exec -v grumphp run
-          - curl -LSs https://codecov.io/bash | sh
+          - curl -LSs https://codecov.io/bash | bash
 
     - step:
         name: Push to GitHub
