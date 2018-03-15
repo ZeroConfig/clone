@@ -7,4 +7,7 @@
     <description>PHPCS</description>
     <!--<exclude-pattern>path/to/exclude/*</exclude-pattern>-->
     <rule ref="./vendor/mediact/coding-standard/src/MediaCT"/>
+    <rule ref="MediactPhpUnit.Coverage.CoversTag">
+        <exclude-pattern>Regression/*.php</exclude-pattern>
+    </rule>
 </ruleset>
