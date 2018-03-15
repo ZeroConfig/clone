@@ -34,7 +34,28 @@ if (!function_exists('deepClone')) {
 
 // @codeCoverageIgnoreStart
 if (!function_exists('🗐')) {
+    // @codeCoverageIgnoreEnd
+    /** @noinspection NonAsciiCharacters */
+    /**
+     * @param object $object
+     *
+     * @return object
+     *
+     * @codeCoverageIgnore
+     * @deprecated In favor of 🐑
+     */
+    function 🗐(object $object): object // @codingStandardsIgnoreLine
+    {
+        return deepClone($object);
+    }
+    // @codeCoverageIgnoreStart
+}
+
 // @codeCoverageIgnoreEnd
+
+// @codeCoverageIgnoreStart
+if (!function_exists('🐑')) {
+    // @codeCoverageIgnoreEnd
     /** @noinspection NonAsciiCharacters */
     /**
      * @param object $object
@@ -43,11 +64,11 @@ if (!function_exists('🗐')) {
      *
      * @codeCoverageIgnore
      */
-    function 🗐(object $object): object // @codingStandardsIgnoreLine
+    function 🐑(object $object): object // @codingStandardsIgnoreLine
     {
         return deepClone($object);
     }
-// @codeCoverageIgnoreStart
+    // @codeCoverageIgnoreStart
 }
 
 // @codeCoverageIgnoreEnd

@@ -11,7 +11,7 @@ $winter->amsterdam         = new stdClass();
 $winter->holland           = $winter->amsterdam;
 $winter->amsterdam->offset = '+1';
 
-$summer                  = 🗐($winter);
+$summer                  = 🐑($winter);
 $summer->holland->offset = '+2';
 
 echo json_encode(

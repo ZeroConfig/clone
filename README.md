@@ -3,7 +3,7 @@
 The `zero-config/clone` package is meant to support developers creating deep
 clones of objects. Contrary to most solutions out there, this package does
 exactly what is says on the tin and requires no knowledge of the inner workings
-or specific configuration in order to do what one expects it to do.
+or specific configuration in order to do what one expects it to do. 🐑
 
 [![codecov](https://codecov.io/bb/zeroconfig/clone/branch/master/graph/badge.svg?token=EXc34YM0zZ)](https://codecov.io/bb/zeroconfig/clone)
 [![Packagist](https://img.shields.io/packagist/v/zero-config/clone.svg)](https://packagist.org/packages/zero-config/clone)
@@ -19,14 +19,14 @@ composer require --dev zero-config/clone
 # Usage
 
 To use the clone functionality, simply invoke the `deepClone` function.
-Alternatively, the alias [`🗐`](https://www.utf8icons.com/character/128464/pages)
+Alternatively, the alias [`🐑`](https://www.utf8icons.com/character/128017/sheep)
 can be used.
 
 ```php
 <?php
 /** @var object $original */
 $copy = deepClone($original);
-$copy = 🗐($original);
+$copy = 🐑($original);
 ```
 
 For an object oriented approach, one can use an instance of `Cloner`.
@@ -67,7 +67,7 @@ $winter->holland = $winter->amsterdam;
 $winter->amsterdam->offset = '+1';
 
 // Create a deep clone of the timezone to set the summer configuration.
-$summer = 🗐($winter);
+$summer = 🐑($winter);
 
 // Set the offset for Holland.
 $summer->holland->offset = '+2';
