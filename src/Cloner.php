@@ -50,10 +50,12 @@ class Cloner implements ClonerInterface
             $property->setAccessible(true);
             $value = $property->getValue($copy);
 
-            if (is_object($value)) {
+            if (!is_scalar($value)) {
                 $property->setValue(
                     $copy,
-                    $this->cloneObject($value, $context)
+                    is_object($value)
+                        ? $this->cloneObject($value, $context)
+                        : $this->cloneArray($value, $context)
                 );
             }
 
@@ -61,5 +63,29 @@ class Cloner implements ClonerInterface
         }
 
         return $copy;
+    }
+
+    /**
+     * Clone the contents of the given array using the given context.
+     *
+     * @param array            $list
+     * @param SplObjectStorage $context
+     *
+     * @return array
+     */
+    private function cloneArray(array $list, SplObjectStorage $context): array
+    {
+        foreach ($list as $key => $value) {
+            if (is_array($value)) {
+                $list[$key] = $this->cloneArray($value, $context);
+                continue;
+            }
+
+            if (is_object($value)) {
+                $list[$key] = $this->cloneObject($value, $context);
+            }
+        }
+
+        return $list;
     }
 }

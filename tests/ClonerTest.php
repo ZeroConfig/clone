@@ -24,6 +24,7 @@ class ClonerTest extends TestCase
      * @return void
      * @covers ::__invoke
      * @covers ::cloneObject
+     * @covers ::cloneArray
      */
     public function testInvoke(
         object $subject,
@@ -70,7 +71,8 @@ class ClonerTest extends TestCase
             $this->createFlatObjectArguments(),
             $this->createNestedObjectArguments(),
             $this->createSiblingObjectArguments(),
-            $this->createStaticPropertyObjectArguments()
+            $this->createStaticPropertyObjectArguments(),
+            $this->createNestedArrayObjectArguments()
         ];
     }
 
@@ -185,6 +187,58 @@ class ClonerTest extends TestCase
                 return $clone;
             },
             $this->createSignature($object, $object)
+        ];
+    }
+
+    /**
+     * @return object[]|callable[]|string[]
+     */
+    private function createNestedArrayObjectArguments(): array
+    {
+        $object = $this->createObject(
+            [
+                'foo' => [
+                    ['bar' => 'baz'],
+                    [
+                        'qux' => [
+                            ['q'],
+                            ['u'],
+                            ['x']
+                        ]
+                    ]
+                ]
+            ]
+        );
+
+        return [
+            $object,
+            function (object $clone) : object {
+                if (property_exists($clone, 'foo')) {
+                    foreach ($clone->foo ?? [] as $index => $object) {
+                        $clone->foo[$index] = array_map(
+                            function ($value) {
+                                return is_string($value)
+                                    ? strtoupper($value)
+                                    : current((array)$value);
+                            },
+                            (array)$object
+                        );
+                    }
+                }
+
+                return $clone;
+            },
+            $this->createSignature(
+                $object,
+                $this->createObject(
+                    [
+                        'foo' => [
+                            ['bar' => 'BAZ'],
+                            ['qux' => ['q']]
+                        ]
+                    ]
+                )
+            )
         ];
     }
 
