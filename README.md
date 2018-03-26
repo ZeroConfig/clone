@@ -5,6 +5,7 @@ clones of objects. Contrary to most solutions out there, this package does
 exactly what is says on the tin and requires no knowledge of the inner workings
 or specific configuration in order to do what one expects it to do. 🐑
 
+[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/zeroconfig/clone.svg)](https://bitbucket.org/zeroconfig/clone/addon/pipelines/home)
 [![codecov](https://codecov.io/bb/zeroconfig/clone/branch/master/graph/badge.svg?token=EXc34YM0zZ)](https://codecov.io/bb/zeroconfig/clone)
 [![Packagist](https://img.shields.io/packagist/v/zero-config/clone.svg)](https://packagist.org/packages/zero-config/clone)
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/zero-config/clone.svg)](https://secure.php.net/)
